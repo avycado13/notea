@@ -8,7 +8,7 @@ requires = [
 name = "notea"
 version = "1.0.0"
 authors = [
-    {name = "Avyay Chundi", email = "you@yourdomain.com"},
+    {name = "Avyay Chundi", email = "avyay.chundi@gmail.com"},
 ]
 description = "Python notes CLI"
 readme = "README.md"
