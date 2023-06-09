@@ -1,0 +1,35 @@
+[build-system]
+build-backend = "setuptools.build_meta"
+requires = [
+    "setuptools ~=63.2.0",
+    "wheel ~=0.37.1",
+]
+[project]
+name = "notea"
+version = "1.0.0"
+authors = [
+    {name = "Avyay Chundi", email = "you@yourdomain.com"},
+]
+description = "Python notes CLI"
+readme = "README.md"
+requires-python = ">=3.8"
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "License :: OSI Approved :: MIT License",
+    "Natural Language :: English",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python",
+    
+]
+
+dependencies = [
+    "stringcase ~=1.2.0",
+    "datetime"
+    "os"
+]
+[project.urls]
+homepage = "https://github.com/avycado13/notea"
+repository = "https://github.com/avycado13/notea"
+
+[project.scripts]
+notea = "notea.notea:main"

@@ -21,7 +21,7 @@ def main():
         msg = msg + line
     if not os.path.exists(DIR+str(current_date)+".md"):
         prefix = True
-    f = open(DIR+str(current_date)+".md" ,"a+")
+    f = open(DIR+"/"+str(current_date)+".md" ,"a+")
     if prefix:
         f.write("\n"+PREFIX)
     f.write("\n"+msg)
