@@ -24,7 +24,7 @@ classifiers = [
 
 dependencies = [
     "stringcase ~=1.2.0",
-    "datetime"
+    "datetime",
     "os"
 ]
 [project.urls]
