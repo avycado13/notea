@@ -6,7 +6,7 @@ requires = [
 ]
 [project]
 name = "notea"
-version = "1.0.0"
+version = "0.1"
 authors = [
     {name = "Avyay Chundi", email = "avyay.chundi@gmail.com"},
 ]
