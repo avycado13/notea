@@ -19,8 +19,10 @@ def main():
         if not line:
             break
         msg = msg + line
-    if not os.path.exists(DIR+str(current_date)+".md"):
+    if not os.path.exists(DIR+str(current_date)+".md") and PREFIX != None:
         prefix = True
+    else:
+        prefix = False
     f = open(DIR+"/"+str(current_date)+".md" ,"a+")
     if prefix:
         f.write("\n"+PREFIX)
