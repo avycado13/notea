@@ -1,42 +1,64 @@
 import datetime
 import os
+import argparse
+from rich.prompt import Prompt
 
-DIR = os.getenv("NOTEA_DIR", "Notes")
+# Default directory for notes
+DEFAULT_DIR = os.getenv("NOTEA_DIR", "Notes")
 
+# Set up argument parser
+parser = argparse.ArgumentParser()
+parser.add_argument("-d", "--dir", type=str, default=DEFAULT_DIR)
+args = parser.parse_args()
+
+def y_n_question(question):
+    response = Prompt.ask(f"{question} (y/n)", choices=["y", "n"])
+    return response.lower() == "y"
 
 def main():
-    if not os.path.exists(DIR):
-        os.mkdir(DIR)
+    # Determine directory
+    notes_dir = args.dir
+    if not os.path.exists(notes_dir):
+        os.makedirs(notes_dir)
 
-    # get current date
+    # Get current date
     current_date = datetime.date.today()
-    msg = ""
-    title = input("Title: ")
+
+    # Determine draft status
+    draft = 'true' if y_n_question("Draft?") else 'false'
+
+    # Get note title and content
+    title = Prompt.ask("Title")
     print("Notes please!")
+    lines = []
     while True:
         try:
-            line = input()
+            line = Prompt.ask()
         except EOFError:
             break
-        if not line:
-            break
-        msg = msg + line
+        else:
+            lines.append(line)
+    msg = "\n".join(lines)
+
+    # Define filename and path
     if not title:
-        f = open(DIR + "/" + str(current_date) + ".md", "a+")
-    elif title:
-        f = open(DIR + "/" + title + ".md", "a+")
-    f.write(
+        filename = f"{current_date}.md"
+    else:
+        filename = f"{title}.md"
+    filepath = os.path.join(notes_dir, filename)
+
+    # Write note to file
+    with open(filepath, "a+") as f:
+        f.write(
             "\n"
             + f"""+++
-                title = {title if title else str(current_date)}
-                date = {current_date}
-                draft = true
-                +++
-            """
-    )
-    f.write("\n" + msg)
-    f.close()
-
+title = "{title if title else str(current_date)}"
+date = {current_date}
+draft = {draft}
++++
+"""
+        )
+        f.write("\n" + msg)
 
 if __name__ == "__main__":
     main()
