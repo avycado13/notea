@@ -1,35 +1,31 @@
-[build-system]
-build-backend = "setuptools.build_meta"
-requires = [
-    "setuptools ~=63.2.0",
-    "wheel ~=0.37.1",
-]
 [project]
 name = "notea"
-version = "0.1"
+version = "0.2.0"
+description = "Notes as easy as a cup of tea"
 authors = [
-    {name = "Avyay Chundi", email = "avyay.chundi@gmail.com"},
+    { name = "avycado13", email = "108358183+avycado13@users.noreply.github.com" }
 ]
-description = "Python notes CLI"
-readme = "README.md"
-requires-python = ">=3.8"
-classifiers = [
-    "Development Status :: 3 - Alpha",
-    "License :: OSI Approved :: MIT License",
-    "Natural Language :: English",
-    "Operating System :: OS Independent",
-    "Programming Language :: Python",
-    
-]
-
 dependencies = [
-    "stringcase ~=1.2.0",
-    "datetime",
-    "os"
+    "stringcase~=1.2.0",
+    "rich>=13.8.1",
 ]
-[project.urls]
-homepage = "https://github.com/avycado13/notea"
-repository = "https://github.com/avycado13/notea"
+readme = "README.md"
+requires-python = ">= 3.8"
 
 [project.scripts]
-notea = "notea.notea:main"
+"notea" = "notea:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.rye]
+managed = true
+dev-dependencies = []
+
+[tool.hatch.metadata]
+allow-direct-references = true
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/notea"]
+
