@@ -1,3 +1,2 @@
-# notea
-
-Describe your project here.
+# Notea
+## A light Python notes CLI
